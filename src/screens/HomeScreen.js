@@ -14,7 +14,7 @@ import {
 } from "react-native-responsive-screen";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Categories from "../components/Categories";
-import SubCategories from "../components/SubCategories";
+import SortCategories from "../components/SortCategories";
 import Destinations from "../components/Destinations";
 
 export default function HomeScreen() {
@@ -52,8 +52,8 @@ export default function HomeScreen() {
           <Categories />
         </View>
         {/* Sub-categories */}
-        <View style={styles.subCategories}>
-          <SubCategories />
+        <View style={styles.sortCategories}>
+          <SortCategories />
         </View>
         {/* Destinations */}
         <View style={styles.destinations}>
@@ -103,5 +103,11 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     paddingLeft: 4,
     letterSpacing: 0.5,
+  },
+  categories:{
+    marginBottom: 20,
+  },
+  sortCategories:{
+    marginBottom: 20,
   },
 });
