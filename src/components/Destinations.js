@@ -10,19 +10,19 @@ import {
 import AntDesign from "@expo/vector-icons/AntDesign";
 
 export default function Destinations() {
-  const navigation = useNavigation;
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       {destinationData.map((item, index) => {
         return (
-          <DestinationCard navitgation={navigation} item={item} key={index} />
+          <DestinationCard navigation={navigation} item={item} key={index} />
         );
       })}
     </View>
   );
 }
 
-export const DestinationCard = ({ navigation, item, index }) => {
+export const DestinationCard = ({ index, navigation, item }) => {
   let isEven = index % 2 === 0;
 
   const [isfavorite, toggleFavorite] = useState(false);
