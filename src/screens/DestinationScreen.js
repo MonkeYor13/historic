@@ -16,6 +16,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 export default function DestinationScreen(props) {
   const item = props.route.params;
@@ -41,15 +42,19 @@ export default function DestinationScreen(props) {
 
         {/* Favourite icon */}
         <TouchableOpacity
-          onPress={() => toggleFavourite(!toggleFavourite)}
+          onPress={() => toggleFavourite(!isFavourite)}
           style={styles.favouriteIcon}
         >
-          <AntDesign name="heart" size={24} color="red" />
+          <AntDesign
+            name="heart"
+            size={24}
+            color={isFavourite ? "red" : "white"}
+          />
         </TouchableOpacity>
       </SafeAreaView>
 
       {/* Title*/}
-      <ScrollView 
+      <ScrollView
         style={styles.descriptionView}
         contentContainerStyle={{ gap: 20 }}
       >
@@ -65,6 +70,28 @@ export default function DestinationScreen(props) {
             <View style={styles.titleDetails}>
               <Text style={styles.detailsHeading}>{item.duration}</Text>
               <Text style={styles.detailsParagraph}>Duration</Text>
+            </View>
+          </View>
+          <View style={styles.durationView}>
+            <MaterialCommunityIcons
+              name="map-marker-distance"
+              size={24}
+              color="orange"
+            />
+            <View style={styles.titleDetails}>
+              <Text style={styles.detailsHeading}>{item.distance}</Text>
+              <Text style={styles.detailsParagraph}>Distance</Text>
+            </View>
+          </View>
+          <View style={styles.durationView}>
+            <MaterialCommunityIcons
+              name="weather-cloudy"
+              size={24}
+              color="blue"
+            />
+            <View style={styles.titleDetails}>
+              <Text style={styles.detailsHeading}>{item.weather}</Text>
+              <Text style={styles.detailsParagraph}>Weather</Text>
             </View>
           </View>
         </View>
@@ -86,7 +113,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 60,
     width: wp(100),
-    backgroundColor: "white",
+    //backgroundColor: "white",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
@@ -122,6 +149,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: 4,
+    //backgroundColor: "red",
+    color: "grey",
   },
   durationView: {
     justifyContent: "center",
@@ -133,8 +162,9 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   detailsHeading: {
-    fontSize: wp(5),
+    fontSize: wp(4),
     fontWeight: "bold",
+    color: "gray",
   },
   detailsParagraph: {
     letterSpacing: 0.5,
@@ -145,9 +175,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 50,
     paddingHorizontal: 20,
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     paddingTop: 32,
     marginTop: -56,
-    
-  }
+  },
 });

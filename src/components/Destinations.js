@@ -38,7 +38,11 @@ export const DestinationCard = ({ index, navigation, item }) => {
         onPress={() => toggleFavorite(!isfavorite)}
         style={styles.heartIcon}
       >
-        <AntDesign name="heart" size={24} color="red" />
+        <AntDesign
+          name="heart"
+          size={24}
+          color={isfavorite ? "red" : "white"}
+        />
       </TouchableOpacity>
 
       <Text style={styles.title}>{item.title}</Text>
